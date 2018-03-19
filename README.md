@@ -1,7 +1,9 @@
 # pass-export
 A pass extension that exports passwords from the password store
 
-## Description `pass export` extends the pass utility with an export
+## Description
+
+`pass export` extends the pass utility with an export
 command. `pass export` exports passwords specified in an export file
 to a target repository. If the target repository does not exist, `pass
 export` asks whether it should create it (as a bare git repository).
