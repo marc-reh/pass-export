@@ -1,0 +1,84 @@
+.TH "pass-export" "1" "March 2018" "pass-export"
+.SH NAME
+pass export -- a \fBpass\fP(1) extension that exports passwords from the password store.
+.SH SYNOPSIS
+.B pass export
+[\-hvV]
+.I
+export-name target-repo
+.SH DESCRIPTION
+\fbpass export\fP extends the \fBpass\fP(1) utility with an export
+command. \fBpass export\fP exports passwords specified in
+\fIexport-name.export\fP to \fItarget-repo\fP.
+.PP
+\fIexport-name.export\fP is a user-provided file in
+\fI~/.password-store\fP (unless this default is overridden by the
+environment variable \fIPASSWORD_STORE_DIR\fP, see \fBpass\fP(1) man
+page).
+.PP
+\fIexport-name.export\fP lists passwords or directories to be
+exported; see the \fIEXAMPLE\fP section. A single dot (`.') specifies
+the export of all passwords from the password store.
+.PP
+At the moment, \fBpass-export\fP's only functionality is to export
+specified passwords to a git repository \fItarget-repo\fP. If
+\fItarget-repo\fP does not exist, \fBpass-export\fP asks whether it
+should create it (as a bare repository).
+.SH OPTIONS
+.TP
+\-h/--help
+Print a help text.
+.TP
+\-v/--verbose
+Show all git output.
+.TP
+\-V/--version
+Show version information.
+.SH EXAMPLE
+List existing passwords in store:
+.PP
+	\fB$ pass\fP
+.br
+	Password Store
+.br
+	|-- Email
+.br
+	|   |-- my_email.com
+.br
+	|   --- another_email.com
+.br
+	--- Banking
+.br
+	|   |-- big_money.com
+.br
+	|   --- credit_card
+.br
+	--- Shopping
+.br
+	    |-- super_shop.com
+.br
+	    |-- books.com
+.br
+	    --- my_store.com
+.PP
+Make a file \fIandroid.export\fP in \fI~/.password-store\fP with the
+following content:
+.PP
+	Email/my_email.com
+.br
+	Banking
+.PP
+Export passwords to \fI~/androidpasswords.git\fP:
+.PP
+	\fB$ pass export android ~/androidpasswords.git\fI
+.PP
+\fI~/androidpasswords.git\fP now contains the password
+\fIEmail/my_email.com\fP and all passwords under \fIBanking\fP. This
+new password store can now be imported on an Android phone with the
+Password Store app. The target repository can be exported to
+repeatedly.
+.SH AUTHOR
+.B pass export
+was written by Marc Rehmsmeier.
+.SH SEE ALSO
+\fBpass\fP(1)

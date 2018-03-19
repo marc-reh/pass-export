@@ -1,0 +1,34 @@
+pass export, a password store extension
+
+Copyright (c) 2018 Marc Rehmsmeier
+
+
+Install the pass-export bash script and the man page:
+
+make install
+
+See Makefile for installation directories.
+
+To change installation directories, eg. installing to /usr instead of
+/usr/local:
+
+make PREFIX=/usr install
+
+You can also copy export.bash to the local extension directory
+~/.password_store/.extensions (create that directory first if it does
+not exist). See the manual page for pass for further details on
+extensions.
+
+To read the man page (after installation):
+
+man pass-export
+
+
+To uninstall:
+
+make uninstall
+
+or
+
+make PREFIX=/usr uninstall
+
